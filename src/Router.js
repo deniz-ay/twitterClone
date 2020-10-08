@@ -19,8 +19,20 @@ function Router() {
         component={firstPage}
         options={{
           headerShown:false
+           
         }} />
-        <Stack.Screen name="Login" component={loginPage} />
+        <Stack.Screen name="Login" component={loginPage}
+                options={{
+                  title: 'Login',
+                  headerStyle: {
+                    backgroundColor: '#5EAADE',
+                  },
+                  headerTintColor: '#fff',
+                  headerTitleStyle: {
+                    fontWeight: 'bold',
+                  },
+                }}
+         />
         <Stack.Screen name="Register" component={registerPage} />
       </Stack.Navigator>
     </NavigationContainer>
