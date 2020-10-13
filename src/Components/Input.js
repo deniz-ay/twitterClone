@@ -1,12 +1,15 @@
 
 import React from 'react';
 import { StyleSheet, Text, View ,TextInput} from 'react-native';
-import { Icon } from 'native-base';
+
 const Input = (props) =>{ 
     return(
         
         <TextInput 
-        placeholder={'name'}
+        placeholder={props.placeholder}
+        secureTextEntry={props.secureTextEntry}
+        onChangeText={props.onChangeText}
+        value={props.value}
         style={[style.input,props.styles]} 
         >
         

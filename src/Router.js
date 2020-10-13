@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native'
-import { createStackNavigator} from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 import firstPage from './Screen/firstPage'
 import loginPage from './Screen/loginPage'
 import registerPage from './Screen/registerPage'
