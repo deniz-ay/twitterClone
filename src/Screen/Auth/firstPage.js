@@ -7,7 +7,7 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import {Button} from '../Components';
+import {Button} from '../../Components';
 const firtPage = (props) => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#5EAADE'}}>

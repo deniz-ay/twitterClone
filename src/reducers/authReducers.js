@@ -18,6 +18,7 @@ export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
 
         case LOGIN_START:
+            console.log("login start");
         case REGISTER_START:
             return {
                 ...state,
@@ -26,6 +27,7 @@ export default (state = INITIAL_STATE, action) => {
 
 
         case LOGIN_SUCCESS:
+            console.log("login succes");
         case REGISTER_SUCCESS:
             return {
                 ...state,
@@ -34,6 +36,7 @@ export default (state = INITIAL_STATE, action) => {
             };
 
         case LOGIN_FAILD:
+            console.log("login faild");
         case REGISTER_FAILD:
             return {
                 ...state,
