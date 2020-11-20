@@ -1,12 +1,13 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View,ActivityIndicator } from 'react-native';
 import HomeDetail from './HomeDetail';
 
 const Home = (props) => (
-    <View>
+    <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
         <Text onPress={()=>{
             props.navigation.navigate('HomeDetail')
         }}>Home</Text>
+       
     </View>
 );
 

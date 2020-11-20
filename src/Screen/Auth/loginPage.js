@@ -17,6 +17,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import { connect } from 'react-redux';
 import {Button, CheckBox, Input} from '../../Components';
 import {Login} from '../../Actions/authActions'
+
 const loginPage = (props) => {
   const [userName, setUserName] = useState('denizay@mail.com');
   const [password, setPassword] = useState('123456');
@@ -56,7 +57,10 @@ const loginPage = (props) => {
               }
               props.Login(obj) 
               
-            }}
+            
+
+          }
+        }
             
             />
           </View>

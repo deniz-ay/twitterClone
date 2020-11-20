@@ -13,7 +13,6 @@ import firestore from '@react-native-firebase/firestore';
 import * as RootNavigation from '../RootNavigation';
 export const Login = (params) => {
   return (dispatch) => {
-    
     if (params.userName != '' && params.password != '') {
       dispatch({type: LOGIN_START});
       auth()
@@ -21,17 +20,18 @@ export const Login = (params) => {
         .then((data) => {
           console.log('User account created & signed in!', data);
           const uid = data.user._user.uid;
-          firestore()
+          firestore() //read fire store
             .collection('Users')
             .doc(uid)
             .get()
             .then((userData) => {
               console.log('login succes', userData._data);
-             
-              dispatch({type: LOGIN_SUCCESS,payload:userData._data});
-            }).catch((err)=>{
+
+              dispatch({type: LOGIN_SUCCESS, payload: userData._data});
+            })
+            .catch((err) => {
               dispatch({type: LOGIN_FAILD});
-                       console.log(err)
+              console.log(err);
             });
         })
         .catch((error) => {
@@ -91,4 +91,41 @@ export const Register = (params) => {
       Alert.alert('Boş Alanları Doldurun');
     }
   };
+};
+export const isUser = () => {
+  return (dispatch) => {
+    auth().onAuthStateChanged((data) => {
+      console.log('isUser dan gelen değer ', data);
+   if(data){
+    const uid = data._user.uid;
+    getUser(uid, dispatch);
+   }
+   else {
+     dispatch({type:LOGIN_FAILD})
+   }
+    });
+  };
+};
+export const signOut = () => {
+  return (dispatch) => {
+    auth()
+      .signOut()
+      .then(() => console.log('User signed out!'));
+  };
+};
+
+const getUser = (uid, dispatch) => {
+  firestore() //read fire store
+    .collection('Users')
+    .doc(uid)
+    .get()
+    .then((userData) => {
+      console.log('login succes', userData._data);
+
+      dispatch({type: LOGIN_SUCCESS, payload: userData._data});
+    })
+    .catch((err) => {
+      dispatch({type: LOGIN_FAILD});
+      console.log(err);
+    });
 };

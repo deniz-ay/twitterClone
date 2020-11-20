@@ -1,14 +1,29 @@
 import {Icon} from 'native-base';
-import React from 'react';
+import React,{useEffect} from 'react';
 import {
   SafeAreaView,
   StatusBar,
   Text,
   View,
   StyleSheet,
+  ActivityIndicator,
 } from 'react-native';
+import { connect } from 'react-redux';
 import {Button} from '../../Components';
+import {isUser} from '../../Actions/authActions'
 const firtPage = (props) => {
+
+useEffect(()=>{
+props.isUser();
+
+},[]);
+if (props.loading){
+  return(
+    <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
+      <ActivityIndicator size='large' color='#00ff00' />
+    </View>
+  )
+}
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#5EAADE'}}>
       <StatusBar barStyle="light-content" backgroundColor="#5EAADE" />
@@ -69,4 +84,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default firtPage;
+const mapStateToProps = ({ authResponse }) => {
+  const { list,loading } = authResponse;
+  return { list,loading };
+};
+
+export default connect(mapStateToProps, { isUser })(firtPage);
