@@ -20,7 +20,7 @@ export const Login = (params) => {
         .then((data) => {
           console.log('User account created & signed in!', data);
           const uid = data.user._user.uid;
-          firestore() //read fire store
+          firestore()   //read fire store
             .collection('Users')
             .doc(uid)
             .get()
